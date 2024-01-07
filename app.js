@@ -92,4 +92,48 @@ function checkHealth() {
             resultContainer.innerHTML += `<p>${result}</p>`;
         });
     }
+    
+    const apiUrl = 'https://api.openai.com/v1/chat/completions'; // Replace with your actual API endpoint
+    const apiKey = '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'; // Replace with your actual API key
+
+    const requestData = {
+        bloodPressure,
+        pulseRate,
+        heartRate,
+        bodyTemperature,
+        bloodOxygen,
+        bloodGlucose,
+        weight,
+        height,
+        age,
+        sex
+    };
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(data => displayAIRecommendations(data))
+    .catch(error => console.error('Error:', error));
 }
+
+function displayAIRecommendations(data) {
+    const aiResultContainer = document.getElementById('aiResult');
+    aiResultContainer.innerHTML = '<h2>AI Recommendations:</h2>';
+
+    // Display AI recommendations (customize based on API response format)
+    if (data && data.recommendations) {
+        data.recommendations.forEach(recommendation => {
+            aiResultContainer.innerHTML += `<p>${recommendation}</p>`;
+        });
+    } else {
+        aiResultContainer.innerHTML += '<p>No AI recommendations available at the moment.</p>';
+    }
+}
+}
+
