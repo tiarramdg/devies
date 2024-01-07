@@ -11,8 +11,8 @@ function checkHealth() {
     const age = document.getElementById('age').value;
     const sex = document.getElementById('sex').value;
 
-    // Initialize health status
-    let result = 'Healthy';
+    // Initialize an array to store health results
+    let results = [];
 
     // Blood pressure ranges (systolic/diastolic)
     const normalBloodPressure = [120, 80];
@@ -20,67 +20,76 @@ function checkHealth() {
 
     // Example logic for health assessment (customize based on medical guidelines)
     if (parseInt(age) > 60) {
-        result = 'Needs extra attention due to age';
+        results.push('Needs extra attention due to age');
     } else if (parseInt(weight) > 100) {
-        result = 'Overweight';
+        results.push('Overweight');
     }
 
     // Blood pressure assessment
     const bpValues = bloodPressure.split('/').map(value => parseInt(value));
     if (bpValues.length === 2) {
         if (bpValues[0] > highBloodPressure[0] || bpValues[1] > highBloodPressure[1]) {
-            result = 'High Blood Pressure';
+            results.push('High Blood Pressure');
         } else if (bpValues[0] < normalBloodPressure[0] || bpValues[1] < normalBloodPressure[1]) {
-            result = 'Low Blood Pressure';
+            results.push('Low Blood Pressure');
         }
     }
 
     // Temperature assessment
     const temp = parseFloat(bodyTemperature);
     if (temp >= 36.5 && temp <= 37.5) {
-        result = 'Normal Temperature';
+        results.push('Normal Temperature');
     } else if (temp === 38) {
-        result = 'Acceptable Temperature';
+        results.push('Acceptable Temperature');
     } else if (temp >= 38.1 && temp <= 39) {
-        result = 'Seek Advice from Doctor (Temperature)';
+        results.push('Seek Advice from Doctor (Temperature)');
     } else if (temp >= 39) {
-        result = 'Need Medical Advice - Call Emergency Services (Temperature)';
+        results.push('Need Medical Advice - Call Emergency Services (Temperature)');
     }
 
     // Pulse rate assessment
     const pulse = parseInt(pulseRate);
     if (pulse >= 40 && pulse <= 100) {
-        result = 'Normal Pulse Rate';
+        results.push('Normal Pulse Rate');
     } else if (pulse >= 101 && pulse <= 109) {
-        result = 'Acceptable Pulse Rate';
+        results.push('Acceptable Pulse Rate');
     } else if (pulse === 93 || pulse === 94) {
-        result = 'Seek Advice from Doctor (Pulse Rate)';
+        results.push('Seek Advice from Doctor (Pulse Rate)');
     } else if (pulse <= 92) {
-        result = 'Call Emergency Services (Pulse Rate)';
+        results.push('Call Emergency Services (Pulse Rate)');
     }
 
     // Blood oxygen assessment
     const oxygen = parseInt(bloodOxygen);
     if (oxygen >= 96) {
-        result = 'Normal Blood Oxygen';
+        results.push('Normal Blood Oxygen');
     } else if (oxygen === 95) {
-        result = 'Acceptable Blood Oxygen';
+        results.push('Acceptable Blood Oxygen');
     } else if (oxygen >= 93 && oxygen <= 94) {
-        result = 'Seek Advice from Doctor (Blood Oxygen)';
+        results.push('Seek Advice from Doctor (Blood Oxygen)');
     } else if (oxygen <= 92) {
-        result = 'Call Emergency Services (Blood Oxygen)';
+        results.push('Call Emergency Services (Blood Oxygen)');
     }
 
     // Blood sugar assessment
     const glucose = parseInt(bloodGlucose);
     if (glucose < 140) {
-        result = 'Normal Blood Sugar';
+        results.push('Normal Blood Sugar');
     } else if (glucose >= 140 && glucose <= 180) {
-        result = 'Pre-Diabetes';
+        results.push('Pre-Diabetes');
     } else if (glucose > 200) {
-        result = 'Diabetes';
+        results.push('Diabetes');
     }
 
-    // Display the result
-    document.getElementById('result').innerText = `Health Status: ${result}`;
+    // Display the results
+    const resultContainer = document.getElementById('result');
+    resultContainer.innerHTML = '<h2>Health Status:</h2>';
+    
+    if (results.length === 0) {
+        resultContainer.innerHTML += '<p>No significant health issues detected. Consult with a healthcare professional for a thorough assessment.</p>';
+    } else {
+        results.forEach(result => {
+            resultContainer.innerHTML += `<p>${result}</p>`;
+        });
+    }
 }
