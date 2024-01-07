@@ -2,7 +2,7 @@ function checkHealth() {
     // Get user input
     const bloodPressure = document.getElementById('bloodPressure').value;
     const pulseRate = document.getElementById('pulseRate').value;
-    const heartRate = document.getElementById('heartRate').value;
+    const heartRatez = document.getElementById('heartRate').value;
     const bodyTemperature = document.getElementById('bodyTemperature').value;
     const bloodOxygen = document.getElementById('bloodOxygen').value;
     const bloodGlucose = document.getElementById('bloodGlucose').value;
@@ -119,7 +119,7 @@ function checkHealth() {
     }
 
      // Heart rate assessment
-    const heartRate = parseInt(heartRate);
+    const heartRate = parseInt(heartRatez);
 
     if ((age >= 18 && age <= 25 && ((sex === 'M' && heartRate >= 62 && heartRate <= 73) || (sex === 'F' && heartRate >= 64 && heartRate <= 80))) ||
         (age >= 26 && age <= 35 && ((sex === 'M' && heartRate >= 62 && heartRate <= 73) || (sex === 'F' && heartRate >= 64 && heartRate <= 81))) ||
