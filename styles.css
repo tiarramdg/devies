@@ -9,8 +9,8 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* Updated alignment to top */
+    min-height: 100vh;
 }
 
 .container {
@@ -19,9 +19,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 80%; /* Adjust the width as needed */
-    max-width: 400px; /* Set a max-width for better responsiveness */
-    margin: 0 auto; /* Center the container horizontally */
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto; /* Adjusted margin for better spacing */
 }
 
 h1 {
@@ -71,6 +71,6 @@ button:hover {
 
 @media screen and (max-width: 600px) {
     .container {
-        width: 90%; /* Adjust width for smaller screens */
+        width: 90%;
     }
 }
