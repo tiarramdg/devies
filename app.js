@@ -43,8 +43,10 @@ function checkHealth() {
     } else if (temperature >= 39.6 && temperature <= 42.0) {
         results.push('Very High Fever');
     }
+    
     // Pulse rate assessment
     const pulse = parseInt(pulseRate);
+
     const athleteRanges = {
         'M': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]],
         'F': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]]
@@ -52,18 +54,25 @@ function checkHealth() {
 
     let category;
 
-    for (const [minAge, maxAge] of athleteRanges[sex]) {
-        if (age >= minAge && age <= maxAge) {
-            switch (true) {
-                case (pulse >= 49 && pulse <= 55): category = 'Athlete'; break;
-                case (pulse >= 56 && pulse <= 61): category = 'Excellent'; break;
-                case (pulse >= 62 && pulse <= 65): category = 'Good'; break;
-                case (pulse >= 70 && pulse <= 73): category = 'Average'; break;
-                case (pulse >= 74 && pulse <= 81): category = 'Below Average'; break;
-                case (pulse >= 82): category = 'Poor'; break;
+    const ageRanges = athleteRanges[sex];
+    
+    if (Array.isArray(ageRanges)) {
+        for (const [minAge, maxAge] of ageRanges) {
+            if (age >= minAge && age <= maxAge) {
+                switch (true) {
+                    case (pulse >= 49 && pulse <= 55): category = 'Athlete'; break;
+                    case (pulse >= 56 && pulse <= 61): category = 'Excellent'; break;
+                    case (pulse >= 62 && pulse <= 65): category = 'Good'; break;
+                    case (pulse >= 70 && pulse <= 73): category = 'Average'; break;
+                    case (pulse >= 74 && pulse <= 81): category = 'Below Average'; break;
+                    case (pulse >= 82): category = 'Poor'; break;
+                }
+                break;
             }
-            break;
         }
+    } else {
+        // Handle the case when athleteRanges[sex] is not an array
+        console.error('Invalid athleteRanges format for the provided sex:', sex);
     }
 
     results.push(`Resting Heart Rate: ${category}`);
