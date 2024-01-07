@@ -15,6 +15,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 400px; /* Set a max-width for better responsiveness */
 }
 
 h1 {
@@ -57,4 +59,12 @@ button:hover {
     margin-top: 20px;
     font-weight: bold;
     color: #2F80ED;
+}
+
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%; /* Adjust width for smaller screens */
+    }
 }
