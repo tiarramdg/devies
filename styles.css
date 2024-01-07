@@ -32,7 +32,8 @@ label {
     color: #333;
 }
 
-input {
+input,
+select {
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
