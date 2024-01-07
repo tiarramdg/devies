@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Health Monitoring</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Health Monitoring</h1>
+        <form id="healthForm">
+            <label for="bloodPressure">Blood Pressure:</label>
+            <input type="text" id="bloodPressure" placeholder="e.g., 120/80" required>
+
+            <label for="pulseRate">Pulse Rate:</label>
+            <input type="number" id="pulseRate" placeholder="beats per minute" required>
+
+            <label for="heartRate">Heart Rate:</label>
+            <input type="number" id="heartRate" placeholder="beats per minute" required>
+
+            <label for="bodyTemperature">Body Temperature:</label>
+            <input type="number" id="bodyTemperature" placeholder="in Celsius" required>
+
+            <label for="bloodOxygen">Blood Oxygen:</label>
+            <input type="number" id="bloodOxygen" placeholder="percentage" required>
+
+            <label for="bloodGlucose">Blood Glucose Level:</label>
+            <input type="number" id="bloodGlucose" placeholder="mg/dL" required>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" required>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="sex">Sex:</label>
+            <select id="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <button type="button" onclick="checkHealth()">Check Health</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
