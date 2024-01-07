@@ -46,26 +46,30 @@ function checkHealth() {
     
     // Pulse rate assessment
     const pulse = parseInt(pulseRate);
-
     const athleteRanges = {
         'male': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]],
         'female': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]]
     };
 
-    let category;
+    let category = 'Undefined'; // Default category
 
     const ageRanges = athleteRanges[sex];
-    
+
     if (Array.isArray(ageRanges)) {
         for (const [minAge, maxAge] of ageRanges) {
             if (age >= minAge && age <= maxAge) {
-                switch (true) {
-                    case (pulse >= 49 && pulse <= 55): category = 'Athlete'; break;
-                    case (pulse >= 56 && pulse <= 61): category = 'Excellent'; break;
-                    case (pulse >= 62 && pulse <= 65): category = 'Good'; break;
-                    case (pulse >= 70 && pulse <= 73): category = 'Average'; break;
-                    case (pulse >= 74 && pulse <= 81): category = 'Below Average'; break;
-                    case (pulse >= 82): category = 'Poor'; break;
+                if (pulse >= 49 && pulse <= 55) {
+                    category = 'Athlete';
+                } else if (pulse >= 56 && pulse <= 61) {
+                    category = 'Excellent';
+                } else if (pulse >= 62 && pulse <= 65) {
+                    category = 'Good';
+                } else if (pulse >= 70 && pulse <= 73) {
+                    category = 'Average';
+                } else if (pulse >= 74 && pulse <= 81) {
+                    category = 'Below Average';
+                } else if (pulse >= 82) {
+                    category = 'Poor';
                 }
                 break;
             }
