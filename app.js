@@ -48,8 +48,8 @@ function checkHealth() {
     const pulse = parseInt(pulseRate);
 
     const athleteRanges = {
-        'Male': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]],
-        'Female': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]]
+        'male': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]],
+        'female': [[18, 25], [26, 35], [36, 45], [46, 55], [56, 65], [65, 150]]
     };
 
     let category;
@@ -130,12 +130,12 @@ function checkHealth() {
      // Heart rate assessment
     const heartRate = parseInt(heartRatez);
 
-    if ((age >= 18 && age <= 25 && ((sex === 'Male' && heartRate >= 62 && heartRate <= 73) || (sex === 'Female' && heartRate >= 64 && heartRate <= 80))) ||
-        (age >= 26 && age <= 35 && ((sex === 'Male' && heartRate >= 62 && heartRate <= 73) || (sex === 'Female' && heartRate >= 64 && heartRate <= 81))) ||
-        (age >= 36 && age <= 45 && ((sex === 'Male' && heartRate >= 63 && heartRate <= 75) || (sex === 'Female' && heartRate >= 65 && heartRate <= 82))) ||
-        (age >= 46 && age <= 55 && ((sex === 'Male' && heartRate >= 64 && heartRate <= 76) || (sex === 'Female' && heartRate >= 66 && heartRate <= 83))) ||
-        (age >= 56 && age <= 65 && ((sex === 'Male' && heartRate >= 62 && heartRate <= 75) || (sex === 'Female' && heartRate >= 64 && heartRate <= 82))) ||
-        (age > 65 && ((sex === 'Male' && heartRate >= 62 && heartRate <= 73) || (sex === 'Female' && heartRate >= 64 && heartRate <= 81)))) {
+    if ((age >= 18 && age <= 25 && ((sex === 'male' && heartRate >= 62 && heartRate <= 73) || (sex === 'female' && heartRate >= 64 && heartRate <= 80))) ||
+        (age >= 26 && age <= 35 && ((sex === 'male' && heartRate >= 62 && heartRate <= 73) || (sex === 'female' && heartRate >= 64 && heartRate <= 81))) ||
+        (age >= 36 && age <= 45 && ((sex === 'male' && heartRate >= 63 && heartRate <= 75) || (sex === 'female' && heartRate >= 65 && heartRate <= 82))) ||
+        (age >= 46 && age <= 55 && ((sex === 'male' && heartRate >= 64 && heartRate <= 76) || (sex === 'female' && heartRate >= 66 && heartRate <= 83))) ||
+        (age >= 56 && age <= 65 && ((sex === 'male' && heartRate >= 62 && heartRate <= 75) || (sex === 'female' && heartRate >= 64 && heartRate <= 82))) ||
+        (age > 65 && ((sex === 'male' && heartRate >= 62 && heartRate <= 73) || (sex === 'female' && heartRate >= 64 && heartRate <= 81)))) {
         results.push('Normal Heart Rate');
     } else {
         results.push('Abnormal Heart Rate');
