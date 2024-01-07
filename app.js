@@ -35,24 +35,50 @@ function checkHealth() {
         }
     }
 
-    // Pulse rate assessment
-    if (parseInt(pulseRate) > 100 || parseInt(pulseRate) < 60) {
-        result = 'Abnormal Pulse Rate';
+    // Temperature assessment
+    const temp = parseFloat(bodyTemperature);
+    if (temp >= 36.5 && temp <= 37.5) {
+        result = 'Normal Temperature';
+    } else if (temp === 38) {
+        result = 'Acceptable Temperature';
+    } else if (temp >= 38.1 && temp <= 39) {
+        result = 'Seek Advice from Doctor (Temperature)';
+    } else if (temp >= 39) {
+        result = 'Need Medical Advice - Call Emergency Services (Temperature)';
     }
 
-    // Body temperature assessment
-    if (parseInt(bodyTemperature) > 37.5) {
-        result = 'Fever';
+    // Pulse rate assessment
+    const pulse = parseInt(pulseRate);
+    if (pulse >= 40 && pulse <= 100) {
+        result = 'Normal Pulse Rate';
+    } else if (pulse >= 101 && pulse <= 109) {
+        result = 'Acceptable Pulse Rate';
+    } else if (pulse === 93 || pulse === 94) {
+        result = 'Seek Advice from Doctor (Pulse Rate)';
+    } else if (pulse <= 92) {
+        result = 'Call Emergency Services (Pulse Rate)';
     }
 
     // Blood oxygen assessment
-    if (parseInt(bloodOxygen) < 95) {
-        result = 'Low Blood Oxygen';
+    const oxygen = parseInt(bloodOxygen);
+    if (oxygen >= 96) {
+        result = 'Normal Blood Oxygen';
+    } else if (oxygen === 95) {
+        result = 'Acceptable Blood Oxygen';
+    } else if (oxygen >= 93 && oxygen <= 94) {
+        result = 'Seek Advice from Doctor (Blood Oxygen)';
+    } else if (oxygen <= 92) {
+        result = 'Call Emergency Services (Blood Oxygen)';
     }
 
-    // Blood glucose assessment
-    if (parseInt(bloodGlucose) > 125) {
-        result = 'High Blood Glucose (Possible Diabetes)';
+    // Blood sugar assessment
+    const glucose = parseInt(bloodGlucose);
+    if (glucose < 140) {
+        result = 'Normal Blood Sugar';
+    } else if (glucose >= 140 && glucose <= 180) {
+        result = 'Pre-Diabetes';
+    } else if (glucose > 200) {
+        result = 'Diabetes';
     }
 
     // Display the result
