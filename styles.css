@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #56CCF2, #2F80ED);
@@ -17,6 +21,7 @@ body {
     text-align: center;
     width: 80%; /* Adjust the width as needed */
     max-width: 400px; /* Set a max-width for better responsiveness */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
 h1 {
@@ -36,12 +41,11 @@ label {
 
 input,
 select {
-    width: calc(100% - 20px); /* Adjust the width to consider padding and border */
+    width: 100%;
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in the total width */
 }
 
 button {
